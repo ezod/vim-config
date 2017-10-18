@@ -14,7 +14,6 @@ set showmode
 set title
 set hidden
 set ruler
-set ai
 set viminfo='20,\"50
 set history=50
 set bs=2

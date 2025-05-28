@@ -2,24 +2,19 @@
 " Aaron Mavrinac <mavrinac@gmail.com>
 
 set nocompatible
-
-" file type detection and syntax highlighting
-filetype on
-filetype plugin on
 syntax on
+filetype plugin indent on
 
-" basic settings
-set showcmd
-set showmode
-set title
-set hidden
+" UI
+set number
 set ruler
-set viminfo='20,\"50
-set history=50
-set bs=2
+set showcmd
+set title
 
 " search
 set hlsearch
+set ignorecase
+set smartcase
 nnoremap <F3> :noh<CR><CR>
 
 " encoding
@@ -29,7 +24,9 @@ set fileencoding=utf-8
 " indentation
 set expandtab
 set autoindent
-set tabstop=8
+set smartindent
+set smarttab
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
@@ -43,10 +40,12 @@ autocmd FileType cpp set softtabstop=2
 autocmd FileType cpp set cc=120
 
 " reopen file at last cursor position
-autocmd BufReadPost *
-\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-\   exe "normal g'\"" |
-\ endif
+augroup remember_cursor_position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
+        \ exe "normal! g`\"" |
+        \ endif
+augroup END
 
 " pathogen
 call pathogen#infect()

@@ -1,14 +1,32 @@
 " vim Configuration
 " Aaron Mavrinac <mavrinac@gmail.com>
 
-set nocompatible
+" bootstrap vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" initialize plugins
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/tagbar'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
+call plug#end()
+
+" general
 syntax on
 filetype plugin indent on
 
 " UI
 set number
 set ruler
-set showcmd
 set title
 
 " search
@@ -16,10 +34,6 @@ set hlsearch
 set ignorecase
 set smartcase
 nnoremap <F3> :noh<CR><CR>
-
-" encoding
-set encoding=utf-8 
-set fileencoding=utf-8 
 
 " indentation
 set expandtab
@@ -30,15 +44,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" language-specific 
-autocmd FileType python set cc=80
-autocmd FileType c set shiftwidth=2
-autocmd FileType c set softtabstop=2
-autocmd FileType c set cc=120
-autocmd FileType cpp set shiftwidth=2
-autocmd FileType cpp set softtabstop=2
-autocmd FileType cpp set cc=120
-
 " reopen file at last cursor position
 augroup remember_cursor_position
   autocmd!
@@ -46,3 +51,4 @@ augroup remember_cursor_position
         \ exe "normal! g`\"" |
         \ endif
 augroup END
+

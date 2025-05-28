@@ -46,19 +46,3 @@ augroup remember_cursor_position
         \ exe "normal! g`\"" |
         \ endif
 augroup END
-
-" pathogen
-call pathogen#infect()
-
-" ctags
-set tags=tags;/
-
-" taglist
-let Tlist_Auto_Open=1
-let Tlist_Exit_OnlyWindow=1
-nnoremap <silent> <F8> :TlistToggle<CR>
-
-" vcscommand
-cabbrev vlog VCSLog
-cabbrev vdiff VCSDiff
-cabbrev vblame VCSAnnotate

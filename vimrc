@@ -18,6 +18,9 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
+Plug 'machakann/vim-highlightedyank'
+Plug 'airblade/vim-rooter'
+Plug 'lervag/vimtex'
 call plug#end()
 
 " general
